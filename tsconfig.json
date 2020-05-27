@@ -8,14 +8,13 @@
     "resolveJsonModule": true,
     "lib": ["ESNext"],
     "noImplicitAny": true,
-    "strictNullChecks": true,
     "esModuleInterop": true,
     "allowSyntheticDefaultImports": true,
     "noImplicitReturns": true,
     "baseUrl": "./"
   },
   "include": [
-    "src/**/*.ts"
+    "src/**/*.ts", "index.ts"
   ],
   "exclude": [
     "node_modules"
