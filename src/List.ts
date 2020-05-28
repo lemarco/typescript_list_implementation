@@ -80,8 +80,18 @@ export default class List<T> {
     }
     public sort(): void {}
     public reverse(): void {}
-    // public toArray():[<T>]{}
-    public forEach(): void {}
+    public toArray():T[]{
+      const array: T[] = []
+      this.forEach((node:Node<T>)=>{array.push(node.value)})
+      return array;
+    }
+    public forEach(f:(node: Node<T>) => void): void {
+      this.iterator = this.head
+      while(this.iterator.next){
+        f(this.iterator)
+        this.iterator = this.iterator.next
+      }
+    }
     get length(): number {
         return this._length;
     }
