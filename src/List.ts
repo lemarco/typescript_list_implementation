@@ -49,7 +49,8 @@ export default class List<T> {
         next.next = temp;
         temp.prev = next;
     }
-    public pop(node: Node<T>): Node<T> {
+    public pop(node: Node<T>): Node<T> | null {
+        if (!this._length) return null;
         const newTail = this.tail.prev;
         const popNode = this.tail;
         newTail.next = null;
@@ -57,7 +58,16 @@ export default class List<T> {
         popNode.prev = null;
         return popNode;
     }
-    public shift(node: Node<T>) {}
+    public shift(node: Node<T>) {
+        if (!this._length) return null;
+        const shiftNode = this.head;
+        const newHead = shiftNode.next;
+
+        shiftNode.next = null;
+        newHead.prev = null;
+        this.head = newHead;
+        return shiftNode;
+    }
     public unShift(value: T) {
         if (!this._length) {
             this.head = this.createNode(value);
